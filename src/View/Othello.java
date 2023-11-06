@@ -13,7 +13,7 @@ public class Othello extends javax.swing.JFrame implements View{
     
     public Othello() {
     Tablero tablero = new Tablero();
-    controller = new OthelloController(tablero, this,this);
+    this.controller = OthelloController.getInstance(tablero, this, this);
     botonesTablero = new JButton[12][12];
     controller.pedirNombresDeJugadores();
     initComponents();
@@ -469,8 +469,8 @@ public class Othello extends javax.swing.JFrame implements View{
   }
 
     public void actualizarMarcador() {
-       int fichasJugador1 = controller.contarfichas1();
-       int fichasJugador2 = controller.contarfichas2();
+       int fichasJugador1 = controller.contarFichasJugador1();
+       int fichasJugador2 = controller.contarFichasJugador2();
     
        Puntaje.setText("Puntaje");
        jugador1.setText(controller.getJugador1().getNombre() + ": " + fichasJugador1);
